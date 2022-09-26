@@ -1,0 +1,23 @@
+<table *ngIf="isShow" class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
+  <thead>
+    <tr>
+      <th>Localisation</th>
+      <th>Chute</th>
+      <th>Distance</th>
+      <th>Pulsation</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+   <tr *ngFor="let group of Value">
+         <td>{{group.localisation}}</td>
+         <td>{{group.chute}}</td>
+         <td>{{group.distance}}</td>
+         <td>{{group.pulsation}}</td>
+         
+
+
+
+     </tr>
+  </tbody>
+</table>

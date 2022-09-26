@@ -1,0 +1,50 @@
+<div class="pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Add User</h1>
+</div>
+
+<!-- User form -->
+<form [formGroup]="userForm" (ngSubmit)="submitUserData()" novalidate>
+  <div class="row">
+    <div class="col-lg-5 col-md-12 col-sm-12">
+      <div class="row">
+
+        <div class="col-md-12 mb-8" >
+          <label>FUllName</label>
+          <input type="text" formControlName="fullName" class="form-control" required>
+          <!-- Showing errors using getter method -->
+             <p *ngIf="fullName.touched && fullName.invalid" class="error"><sup>*</sup>Please enter atleast the FullName</p>
+              <p *ngIf="fullName.errors?.minlength" class="error"><sup>*</sup> The FullName shouldn't be less than 8 words</p>
+        </div>
+
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <label>Email</label>
+          <input type="email" formControlName="email" class="form-control" required>
+          <!-- Showing errors using getter method -->
+          <p *ngIf="email.touched && email.invalid" class="error"><sup>*</sup>Please provide email</p>
+          <p *ngIf="email.errors?.pattern" class="error"><sup>*</sup>Please enter correct email</p>
+        </div>
+
+        <div class="col-md-12 mb-3">
+          <label>PhoneNumber</label>
+          <input type="text" formControlName="phone" class="form-control" required>
+          <!-- Showing errors using getter method -->
+          <p *ngIf="phone.touched && phone.invalid" class="error"><sup>*</sup>Please provide contact
+            number</p>
+          <p *ngIf="phone.errors?.pattern" class="error"><sup>*</sup>Use numbers only
+            number</p>
+        </div>
+
+      </div>
+
+      <div class="form-group text-right">
+        <button type="button" class="btn btn-secondary gap-right" (click)="ResetForm()">Reset</button>
+        <button type="submit" class="btn btn-success" [disabled]="!userForm.valid">Add User</button>
+      </div>
+
+    </div>
+  </div>
+</form><!-- User form ends-->

@@ -1,0 +1,74 @@
+<!-- Top navigation -->
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p- shadow">
+ <a class="navbar-brand col-sm-8s col-md-2 mr-0">
+   <div class="smartgreen-Titre">
+     <span class="dasboard-text">Welcome In My Smart Bracelet </span>
+  </div>
+ </a>
+</nav>
+<!-- Sidebar navigation -->
+<div class="container-fluid">
+ <div classcmd="row">
+   <nav class="col-md-2 d-md-block bg-light sidebar">
+     <div class="sidebar-sticky">
+       <ul class="nav flex-column">
+         <li class="nav-item">
+           <a class="nav-link active">
+             <i class="fas fa-user"></i>Admin Profile
+           </a>
+         </li>
+         <li class="nav-item">
+          <a class="nav-link" routerLink="/value" routerLinkActive="active">
+            <i class="fas fa-list"></i>My Dashboard
+          </a>
+        </li>
+          <!-- routerLink="/register-user" to navigate to view-users component -->
+          <li class="nav-item">
+           <a class="nav-link" routerLink="/register-userlist" routerLinkActive="active">
+             <i class="fas fa-plus"></i>Add User
+           </a>
+         </li>
+         <!-- routerLink="/view-users" to navigate to view-users component -->
+         <!-- routerLinkActive="active" activates active class for component-->
+         <li class="nav-item">
+           <a class="nav-link" routerLink="/view-users" routerLinkActive="active">
+             <i class="fas fa-list-ul"></i>Users List
+           </a>
+         </li>
+         <!-- Calling SignOut() Api from AuthService -->
+         <li class="nav-item">
+           <a class="nav-link" (click)="authService.SignOut()">
+             <i class="fas fa-sign-out-alt"></i>Log out
+           </a>
+         </li>
+       </ul>
+     </div>
+   </nav>
+   <!-- Main content -->
+   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-6">
+     <div class="inner-adjust">
+       
+       <div class="pt-3 pb-2 mb-5 border-bottom">
+         <h1 class="h2">Admin Profile</h1>
+       </div>
+       <!-- Show user data when logged in -->
+       <div class="row" *ngIf="authService.userData as user">
+         <div class="col-md-12">
+           <div class="media">
+            <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : 'https://cdn.shopify.com/s/files/1/1394/2307/files/BuyerPersona_grande.gif?v=1547752750'}}"
+            alt="{{user.displayName}}">
+             <div class="media-body">
+                 <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'Admin'}}</strong></h1>
+               <h3> Adress Email: <strong>{{user.email}}</strong></h3>
+               <h3>User ID: <strong>{{user.uid}}</strong></h3>
+             </div>
+           </div>
+         </div>
+       </div>
+
+     </div>
+   </main>
+  
+
+ </div>
+</div>
